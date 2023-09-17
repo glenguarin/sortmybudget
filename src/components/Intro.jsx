@@ -3,6 +3,7 @@ import { Form } from "react-router-dom";
 
 // library
 import "bootstrap/dist/css/bootstrap.min.css";
+import { UserPlus } from "phosphor-react";
 
 // assets
 import illustration from "../assets/illustration.jpg";
@@ -30,7 +31,8 @@ const Intro = () => {
           />
           <input type="hidden" name="_action" value="newUser" />
           <button className="btn btn-dark btn-lg" type="submit">
-            <span>Create Account</span>
+            <span>Create Account </span>
+            <UserPlus size={24} />
           </button>
         </Form>
       </div>
