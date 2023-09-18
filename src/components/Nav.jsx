@@ -6,6 +6,7 @@ import logomark from "/public/favicon.svg";
 
 // library
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Trash } from "phosphor-react";
 
 const Nav = () => {
   return (
@@ -21,7 +22,8 @@ const Nav = () => {
         </NavLink>
         <Form>
           <button className="btn btn-outline-danger btn-lg" type="submit">
-            Delete User
+            <span>Delete User </span>
+            <Trash className="pb-1" size={28} />
           </button>
         </Form>
       </div>
