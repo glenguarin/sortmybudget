@@ -20,7 +20,7 @@ export function mainLoader() {
 }
 
 const Main = () => {
-  const { userName } = useLoaderData;
+  const { userName } = useLoaderData();
 
   return (
     <div className="container=xxl mx-5 px-5 mt-4">

@@ -8,6 +8,9 @@ import "react-toastify/dist/ReactToastify.css";
 // layouts
 import Main, { mainLoader } from "./layouts/Main";
 
+// actions
+import { logoutAction } from "./actions/logout";
+
 // routes
 import Dashboard, { dashboardLoader } from "./pages/Dashboard";
 import Error from "./pages/Error";
@@ -23,6 +26,12 @@ const router = createBrowserRouter([
         index: true,
         element: <Dashboard />,
         loader: dashboardLoader,
+        // action: dashboardAction,
+        errorElement: <Error />,
+      },
+      {
+        path: "logout",
+        action: logoutAction,
       },
     ],
   },
