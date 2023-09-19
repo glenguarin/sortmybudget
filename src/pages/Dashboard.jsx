@@ -10,6 +10,7 @@ import Intro from "../components/Intro";
 
 // helper functions
 import { fetchData } from "../helpers";
+import AddBudgetForm from "../components/AddBudgetForm";
 
 //loader
 export function dashboardLoader() {
@@ -30,6 +31,7 @@ const Dashboard = () => {
           <div>
             <p className="fs-4">Want to unlock financial freedom?</p>
             <p className="fs-4">Start by crafting a budget today!</p>
+            <AddBudgetForm />
           </div>
         </div>
       ) : (
