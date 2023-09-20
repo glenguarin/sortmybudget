@@ -4,6 +4,9 @@ import { useRef } from "react";
 // rrd imports
 import { useFetcher } from "react-router-dom";
 
+// library imports
+import { CurrencyCircleDollar } from "phosphor-react";
+
 const AddBudgetForm = () => {
   const fetcher = useFetcher();
   const isSubmitting = fetcher.state === "submitting";
@@ -46,7 +49,8 @@ const AddBudgetForm = () => {
         </div>
         <input type="hidden" name="_action" value="createBudget" />
         <button type="submit" className="btn btn-dark">
-          <span>Create budget</span>
+          <span>Create budget </span>
+          <CurrencyCircleDollar className="pb-1" size={24} />
         </button>
       </fetcher.Form>
     </div>
