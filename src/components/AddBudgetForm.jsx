@@ -12,11 +12,13 @@ const AddBudgetForm = () => {
   const focusRef = useRef();
 
   return (
-    <div>
+    <div className="container-fluid rounded shadow p-4 w-50 m-0">
       <h2>Create budget</h2>
       <fetcher.Form method="post" ref={formRef}>
         <div>
-          <label htmlFor="newBudget">Budget Name</label>
+          <label className="form-label fs-5" for="newBudget">
+            Budget Name
+          </label>
           <input
             type="text"
             name="newBudget"
@@ -24,10 +26,13 @@ const AddBudgetForm = () => {
             placeholder="e.g. Groceries"
             required
             ref={focusRef}
+            className="form-control fs-5 mb-3"
           />
         </div>
         <div>
-          <label htmlFor="newBudgetAmount">Amount</label>
+          <label className="form-label fs-5" for="newBudgetAmount">
+            Amount
+          </label>
           <input
             type="number"
             step="0.01"
@@ -36,6 +41,7 @@ const AddBudgetForm = () => {
             placeholder="e.g., $350"
             required
             inputMode="decimal"
+            className="form-control fs-5 mb-3"
           />
         </div>
         <input type="hidden" name="_action" value="createBudget" />

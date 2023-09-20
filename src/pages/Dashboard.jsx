@@ -25,7 +25,7 @@ const Dashboard = () => {
     <>
       {userName ? (
         <div>
-          <h1 className="h-100 display-2 py-4 align-content-start">
+          <h1 className="h-100 display-2 py-4">
             Welcome back, <span className="text-purple"> {userName}</span>
           </h1>
           <div>
