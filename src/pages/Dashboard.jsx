@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Intro from "../components/Intro";
 
 // helper functions
-import { fetchData } from "../helpers";
+import { fetchData, waait } from "../helpers";
 import AddBudgetForm from "../components/AddBudgetForm";
 
 //loader
@@ -24,6 +24,15 @@ export async function dashboardAction({ request }) {
 
   const data = await request.formData();
   const { _action, ...values } = Object.fromEntries(data);
+
+  if (_action === "newUser") {
+    try {
+      localStorage.setItem("userName", JSON.stringify(values.userName));
+      return toast.success(`Welcome, ${values.userName}`);
+    } catch (e) {
+      throw new Error("There was a problem creating your account.");
+    }
+  }
 }
 
 const Dashboard = () => {
