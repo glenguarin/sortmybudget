@@ -12,7 +12,7 @@ import Main, { mainLoader } from "./layouts/Main";
 import { logoutAction } from "./actions/logout";
 
 // routes
-import Dashboard, { dashboardLoader } from "./pages/Dashboard";
+import Dashboard, { dashboardLoader, dashboardAction } from "./pages/Dashboard";
 import Error from "./pages/Error";
 
 const router = createBrowserRouter([
