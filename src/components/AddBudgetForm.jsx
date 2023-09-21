@@ -1,8 +1,8 @@
 // react imports
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 // rrd imports
-import { useFetcher } from "react-router-dom";
+import { Form, useFetcher } from "react-router-dom";
 
 // library imports
 import { CurrencyCircleDollar } from "phosphor-react";
@@ -14,12 +14,20 @@ const AddBudgetForm = () => {
   const formRef = useRef();
   const focusRef = useRef();
 
+  useEffect(() => {
+    if (!isSubmitting) {
+      formRef.current.reset();
+      formRef.current.focus();
+    }
+  }),
+    [isSubmitting];
+
   return (
     <div className="container-fluid rounded shadow p-4 w-50 m-0">
       <h2>Create budget</h2>
       <fetcher.Form method="post" ref={formRef}>
         <div>
-          <label className="form-label fs-5" for="newBudget">
+          <label className="form-label fs-5" htmlFor="newBudget">
             Budget Name
           </label>
           <input
@@ -33,7 +41,7 @@ const AddBudgetForm = () => {
           />
         </div>
         <div>
-          <label className="form-label fs-5" for="newBudgetAmount">
+          <label className="form-label fs-5" htmlFor="newBudgetAmount">
             Amount
           </label>
           <input
