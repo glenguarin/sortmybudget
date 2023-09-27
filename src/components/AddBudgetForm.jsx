@@ -19,8 +19,7 @@ const AddBudgetForm = () => {
       formRef.current.reset();
       formRef.current.focus();
     }
-  }),
-    [isSubmitting];
+  }, [isSubmitting]);
 
   return (
     <div className="container-fluid rounded shadow p-4 w-50 m-0">

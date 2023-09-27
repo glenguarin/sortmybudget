@@ -39,3 +39,16 @@ export const createBudget = ({ name, amount }) => {
     JSON.stringify([...existingBudgets, newItem])
   );
 };
+
+//total spent by budget
+export const calculateSpentByBudget = (budgetId) => {
+  const expenses = fetchData("expenses") ?? [];
+  const budgetSpent = expenses.reduce((acc, expense) => {
+    // check if expense.id === budgetId passed in
+    if (expense.budgetId !== budgetId) return acc;
+
+    // add the current amount to my total
+    return (acc += expense.amount);
+  }, 0);
+  return budgetSpent;
+};
