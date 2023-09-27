@@ -1,6 +1,12 @@
 export const waait = () =>
   new Promise((res) => setTimeout(res, Math.random() * 2000));
 
+// colors
+const generateRandomColor = () => {
+  const existingBudgetsLength = fetchData("budgets")?.length ?? 0;
+  return `${existingBudgetsLength * 34} 65% 50%`;
+};
+
 // local storage
 export const fetchData = (key) => {
   return JSON.parse(localStorage.getItem(key));
@@ -27,7 +33,7 @@ export const createBudget = ({ name, amount }) => {
     amount: +amount,
     color: generateRandomColor(),
   };
-  const existingBudgets = fetchData("budgets" ?? []);
+  const existingBudgets = fetchData("budgets") ?? [];
   return localStorage.setItem(
     "budgets",
     JSON.stringify([...existingBudgets, newItem])

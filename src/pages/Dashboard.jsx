@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // components
 import Intro from "../components/Intro";
 import AddBudgetForm from "../components/AddBudgetForm";
+import BudgetItem from "../components/BudgetItem";
 
 // helper functions
 import { fetchData, waait, createBudget } from "../helpers";
@@ -65,7 +66,7 @@ const Dashboard = () => {
                 <div>
                   <AddBudgetForm />
                 </div>
-                <h2>Existing Budgets</h2>
+                <h2 className="display-4 pt-5">Existing Budgets</h2>
                 <div>
                   {budgets.map((budget) => (
                     <BudgetItem key={budget.id} budget={budget} />

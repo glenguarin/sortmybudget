@@ -28,9 +28,9 @@ const Main = () => {
       <main>
         <Outlet />
       </main>
-      <div>
+      {/* <div>
         <img className="fixed-bottom" src={wave} alt="wave" />
-      </div>
+      </div> */}
     </div>
   );
 };
