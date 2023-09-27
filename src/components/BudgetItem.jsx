@@ -8,7 +8,9 @@ const BudgetItem = ({ budget, showDelete = false }) => {
     <div>
       <div>
         <h3>{name}</h3>
+        <p>{amount} Budgeted</p>
       </div>
+      <progress max={amount} value={spent}></progress>
     </div>
   );
 };
