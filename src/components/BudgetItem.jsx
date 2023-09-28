@@ -5,7 +5,7 @@ const BudgetItem = ({ budget, showDelete = false }) => {
   const spent = calculateSpentByBudget(id);
 
   return (
-    <div>
+    <div className="container-fuid rounded shadow p-4 w-50">
       <div>
         <h3>{name}</h3>
         <p>{amount} Budgeted</p>
