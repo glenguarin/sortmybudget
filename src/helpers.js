@@ -12,6 +12,12 @@ export const fetchData = (key) => {
   return JSON.parse(localStorage.getItem(key));
 };
 
+// get all items from local storage
+export const getAllMatchingItems = ({ category, key, value }) => {
+  const data = fetchData(category) ?? [];
+  return data.filter((item) => item[key] === value);
+};
+
 // delete item from local storage
 export const deleteItem = ({ key, id }) => {
   const existingData = fetchData(key);
@@ -21,8 +27,6 @@ export const deleteItem = ({ key, id }) => {
   }
   return localStorage.removeItem(key);
 };
-
-// get all items from local storage
 
 // create budget
 export const createBudget = ({ name, amount }) => {
@@ -40,6 +44,22 @@ export const createBudget = ({ name, amount }) => {
   );
 };
 
+// create expense
+export const createExpense = ({ name, amount, budgetId }) => {
+  const newItem = {
+    id: crypto.randomUUID(),
+    name: crypto.randomUUID(),
+    createdAt: Date.now(),
+    amount: +amount,
+    budgetId: budgetId,
+  };
+  const existingExpenses = fetchData("expenses") ?? [];
+  return localStorage.setItem(
+    "expenses",
+    JSON.stringify([...existingExpenses, newItem])
+  );
+};
+
 //total spent by budget
 export const calculateSpentByBudget = (budgetId) => {
   const expenses = fetchData("expenses") ?? [];
@@ -51,4 +71,24 @@ export const calculateSpentByBudget = (budgetId) => {
     return (acc += expense.amount);
   }, 0);
   return budgetSpent;
+};
+
+// formatting
+export const formatDateToLocaleString = (epoch) =>
+  new Date(epoch).toLocaleDateString();
+
+//formatting percentages
+export const formatPercentage = (amt) => {
+  return amt.toLocaleString(undefined, {
+    style: "percent",
+    minumunFractionDigits: 0,
+  });
+};
+
+// format currency
+export const formatCurrency = (amt) => {
+  return amt.toLocaleString(undefined, {
+    syle: "currency",
+    currency: "NZD",
+  });
 };
