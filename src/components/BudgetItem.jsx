@@ -1,4 +1,12 @@
-import { calculateSpentByBudget } from "../helpers";
+// rrd inputs
+import { Form, Link } from "react-router-dom";
+
+// helper functions
+import {
+  calculateSpentByBudget,
+  formatCurrency,
+  formatPercentage,
+} from "../helpers";
 
 const BudgetItem = ({ budget, showDelete = false }) => {
   const { id, name, amount, color } = budget;
@@ -8,9 +16,42 @@ const BudgetItem = ({ budget, showDelete = false }) => {
     <div className="container-fuid rounded shadow p-4 w-50">
       <div>
         <h3>{name}</h3>
-        <p>{amount} Budgeted</p>
+        <p>{formatCurrency(amount)} Budgeted</p>
       </div>
-      <progress max={amount} value={spent}></progress>
+      <progress max={amount} value={spent}>
+        {formatPercentage(spent / amount)}
+      </progress>
+      <div>
+        <small>{formatCurrency(spent)} spent</small>
+        <small>{formatCurrency(amount - spent)} remaining</small>
+      </div>
+      {showDelete ? (
+        <div>
+          <Form
+            method="post"
+            action="delete"
+            onSubmit={(event) => {
+              if (
+                !confirm(
+                  "Are you sure you want to permanently delete this budget?"
+                )
+              ) {
+                event.preventDefault;
+              }
+            }}
+          >
+            <button type="submit">
+              <span>Delete Budget</span>
+            </button>
+          </Form>
+        </div>
+      ) : (
+        <div>
+          <Link to={`/budget/${id}`}>
+            <span>View Details</span>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
