@@ -1,4 +1,7 @@
-import { useRef } from "react";
+// react imports
+import { useEffect, useRef } from "react";
+
+// rrd imports
 import { useFetcher } from "react-router-dom";
 
 const AddExpenseForm = ({ budgets }) => {
@@ -20,8 +23,14 @@ const AddExpenseForm = ({ budgets }) => {
 
   return (
     <div>
-      <h2>Add New Expense</h2>
-      <fetcher.Form>
+      <h2>
+        Add New{" "}
+        <span>
+          {budgets.length === 1 && `${budgets.map((budg) => budg.name)}`}
+        </span>{" "}
+        Expense
+      </h2>
+      <fetcher.Form method="post" ref={formRef}>
         <div>
           <div>
             <label htmlFor="newExpense">Expense Name</label>
@@ -47,17 +56,29 @@ const AddExpenseForm = ({ budgets }) => {
             />
           </div>
         </div>
-        <div>
+        <div hidden={budgets.length === 1}>
           <label htmlFor="newExpenseBudget">Budget Category</label>
-          <select
-            name="newExpenseBudget"
-            id="newExpenseBudget"
-            required
-          ></select>
+          <select name="newExpenseBudget" id="newExpenseBudget" required>
+            {budgets
+              .sort((a, b) => a.createdAt - b.createdAt)
+              .map((budget) => {
+                return (
+                  <option key={budget.id} value={budget.id}>
+                    {budget.name}
+                  </option>
+                );
+              })}
+          </select>
         </div>
         <input type="hidden" name="_action" value="createExpense" />
-        <button type="submit">
-          <span>Add Expense</span>
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? (
+            <span>Creating budget</span>
+          ) : (
+            <>
+              <span>Add Expense</span>
+            </>
+          )}
         </button>
       </fetcher.Form>
     </div>
