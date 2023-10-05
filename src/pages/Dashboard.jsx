@@ -8,16 +8,25 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // components
 import Intro from "../components/Intro";
 import AddBudgetForm from "../components/AddBudgetForm";
+import AddExpenseForm from "../components/AddExpenseForm";
 import BudgetItem from "../components/BudgetItem";
+import Table from "../components/Table";
 
 // helper functions
-import { fetchData, waait, createBudget } from "../helpers";
+import {
+  createExpense,
+  deleteItem,
+  fetchData,
+  waait,
+  createBudget,
+} from "../helpers";
 
 //loader
 export function dashboardLoader() {
   const userName = fetchData("userName");
   const budgets = fetchData("budgets");
-  return { userName, budgets };
+  const expenses = fetchData("expenses");
+  return { userName, budgets, expenses };
 }
 
 //action
@@ -46,6 +55,31 @@ export async function dashboardAction({ request }) {
       return toast.success("Budget created!");
     } catch (e) {
       throw new Error("There was a problem creating your budget.");
+    }
+  }
+
+  if (_action === "createExpense") {
+    try {
+      createExpense({
+        name: values.newExpense,
+        amount: values.newExpenseAmount,
+        budgetId: values.newExpenseBudget,
+      });
+      return toast.success(`Expense ${values.newExpense} created!`);
+    } catch (e) {
+      throw new Error("There was a problem creating your expense.");
+    }
+  }
+
+  if (_action === "deleteExpense") {
+    try {
+      deleteItem({
+        key: "expenses",
+        id: values.expenseId,
+      });
+      return toast.success("Expense deleted!");
+    } catch (e) {
+      throw new Error("There was a problem deleting your expense.");
     }
   }
 }
