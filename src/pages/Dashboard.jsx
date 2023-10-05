@@ -99,6 +99,7 @@ const Dashboard = () => {
               <div>
                 <div>
                   <AddBudgetForm />
+                  <AddExpenseForm budgets={budgets} />
                 </div>
                 <h2 className="display-4 pt-5">Existing Budgets</h2>
                 <div>
