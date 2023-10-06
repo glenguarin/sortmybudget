@@ -97,7 +97,7 @@ const Dashboard = () => {
           <div>
             {budgets && budgets.length > 0 ? (
               <div>
-                <div>
+                <div className="d-flex">
                   <AddBudgetForm />
                   <AddExpenseForm budgets={budgets} />
                 </div>

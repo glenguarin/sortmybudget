@@ -22,7 +22,7 @@ const AddExpenseForm = ({ budgets }) => {
   }, [isSubmitting]);
 
   return (
-    <div>
+    <div className="container-fluid rounded shadow p-4 w-50 ms-5">
       <h2>
         Add New{" "}
         <span>
