@@ -13,15 +13,15 @@ const BudgetItem = ({ budget, showDelete = false }) => {
   const spent = calculateSpentByBudget(id);
 
   return (
-    <div className="container-fuid rounded shadow p-4 w-50">
-      <div>
-        <h3>{name}</h3>
-        <p>{formatCurrency(amount)} Budgeted</p>
+    <div className="container-fuid rounded shadow p-4 w-50 mt-4">
+      <div className="d-flex justify-content-between ">
+        <h2 className="">{name}</h2>
+        <h3>{formatCurrency(amount)} Budgeted</h3>
       </div>
       <progress max={amount} value={spent}>
         {formatPercentage(spent / amount)}
       </progress>
-      <div>
+      <div className="d-flex justify-content-between">
         <small>{formatCurrency(spent)} spent</small>
         <small>{formatCurrency(amount - spent)} remaining</small>
       </div>
@@ -46,8 +46,8 @@ const BudgetItem = ({ budget, showDelete = false }) => {
           </Form>
         </div>
       ) : (
-        <div>
-          <Link to={`/budget/${id}`}>
+        <div className="d-flex justify-content-center">
+          <Link className="btn btn-danger" to={`/budget/${id}`}>
             <span>View Details</span>
           </Link>
         </div>

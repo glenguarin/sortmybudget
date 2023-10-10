@@ -31,9 +31,11 @@ const AddExpenseForm = ({ budgets }) => {
         Expense
       </h2>
       <fetcher.Form method="post" ref={formRef}>
-        <div>
+        <div className="d-flex">
           <div>
-            <label htmlFor="newExpense">Expense Name</label>
+            <label className="form-label fs-5" htmlFor="newExpense">
+              Expense Name
+            </label>
             <input
               type="text"
               name="newExpense"
@@ -41,10 +43,13 @@ const AddExpenseForm = ({ budgets }) => {
               placeholder="e.g., Coffee"
               ref={focusRef}
               required
+              className="form-control fs-5 mb-3"
             />
           </div>
-          <div>
-            <label htmlFor="newExpenseAmount">Amount</label>
+          <div className="mx-4">
+            <label className="form-label fs-5" htmlFor="newExpenseAmount">
+              Amount
+            </label>
             <input
               type="number"
               step="0.01"
@@ -53,6 +58,7 @@ const AddExpenseForm = ({ budgets }) => {
               id="newExpenseAmount"
               placeholder="e.g., 3.50"
               required
+              className="form-control fs-5 mb-3"
             />
           </div>
         </div>
@@ -71,7 +77,7 @@ const AddExpenseForm = ({ budgets }) => {
           </select>
         </div>
         <input type="hidden" name="_action" value="createExpense" />
-        <button type="submit" disabled={isSubmitting}>
+        <button type="submit" className="btn btn-dark" disabled={isSubmitting}>
           {isSubmitting ? (
             <span>Creating budget</span>
           ) : (
