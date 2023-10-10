@@ -85,7 +85,7 @@ export async function dashboardAction({ request }) {
 }
 
 const Dashboard = () => {
-  const { userName, budgets } = useLoaderData();
+  const { userName, budgets, expenses } = useLoaderData();
 
   return (
     <>
@@ -107,6 +107,19 @@ const Dashboard = () => {
                     <BudgetItem key={budget.id} budget={budget} />
                   ))}
                 </div>
+                {expenses && expenses.length > 0 && (
+                  <div className="grid-md">
+                    <h2>Recent Expenses</h2>
+                    <Table
+                      expenses={expenses
+                        .sort((a, b) => b.createdAt - a.createdAt)
+                        .slice(0, 8)}
+                    />
+                    {expenses.length > 8 && (
+                      <Link to="expenses">View all expenses</Link>
+                    )}
+                  </div>
+                )}
               </div>
             ) : (
               <div>
