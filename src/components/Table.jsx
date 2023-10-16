@@ -4,9 +4,9 @@ import ExpenseItem from "./ExpenseItem";
 const Table = ({ expenses, showBudget = true }) => {
   return (
     <div>
-      <table className="table mx-auto">
-        <thead className="p-5">
-          <tr>
+      <table className="table mx-auto text-center">
+        <thead>
+          <tr className="fs-4">
             {["Name", "Amount", "Date", showBudget ? "Budget" : "", ""].map(
               (i, index) => (
                 <th key={index}>{i}</th>
