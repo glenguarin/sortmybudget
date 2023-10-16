@@ -101,7 +101,7 @@ const Dashboard = () => {
                   <AddBudgetForm />
                   <AddExpenseForm budgets={budgets} />
                 </div>
-                <h2 className="display-4 pt-5">Existing Budgets</h2>
+                <h2 className="display-5 pt-5">Existing Budgets</h2>
                 <div>
                   {budgets.map((budget) => (
                     <BudgetItem key={budget.id} budget={budget} />
@@ -109,7 +109,7 @@ const Dashboard = () => {
                 </div>
                 {expenses && expenses.length > 0 && (
                   <div className="grid-md">
-                    <h2>Recent Expenses</h2>
+                    <h2 className="display-5 pt-5 pb-2">Recent Expenses</h2>
                     <Table
                       expenses={expenses
                         .sort((a, b) => b.createdAt - a.createdAt)
