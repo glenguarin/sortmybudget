@@ -1,6 +1,9 @@
 // rrd imports
 import { Link, useFetcher } from "react-router-dom";
 
+// library
+import { Trash } from "phosphor-react";
+
 // helper imports
 import {
   formatCurrency,
@@ -24,7 +27,9 @@ const ExpenseItem = ({ expense, showBudget }) => {
       <td>{formatDateToLocaleString(expense.createdAt)}</td>
       {showBudget && (
         <td>
-          <Link to={`/budget/${budget.id}`}>{budget.name}</Link>
+          <Link className="btn btn-danger" to={`/budget/${budget.id}`}>
+            {budget.name}
+          </Link>
         </td>
       )}
       <td>
@@ -32,9 +37,12 @@ const ExpenseItem = ({ expense, showBudget }) => {
           <input type="hidden" name="_action" value="deleteExpense" />
           <input type="hidden" name="expenseId" value={expense.id} />
           <button
+            className="btn btn-outline-danger"
             type="submit"
             aria-label={`Delete ${expense.name} expense`}
-          ></button>
+          >
+            <Trash className="pb-1" size={28} />
+          </button>
         </fetcher.Form>
       </td>
     </>
