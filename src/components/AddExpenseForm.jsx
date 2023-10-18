@@ -63,8 +63,15 @@ const AddExpenseForm = ({ budgets }) => {
           </div>
         </div>
         <div hidden={budgets.length === 1}>
-          <label htmlFor="newExpenseBudget">Budget Category</label>
-          <select name="newExpenseBudget" id="newExpenseBudget" required>
+          <label className="form-label fs-5" htmlFor="newExpenseBudget">
+            Budget Category
+          </label>
+          <select
+            className="form-control fs-5 mb-3"
+            name="newExpenseBudget"
+            id="newExpenseBudget"
+            required
+          >
             {budgets
               .sort((a, b) => a.createdAt - b.createdAt)
               .map((budget) => {
