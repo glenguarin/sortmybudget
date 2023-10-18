@@ -88,7 +88,7 @@ export const formatPercentage = (amt) => {
 // format currency
 export const formatCurrency = (amt) => {
   return amt.toLocaleString(undefined, {
-    syle: "currency",
+    style: "currency",
     currency: "NZD",
   });
 };
