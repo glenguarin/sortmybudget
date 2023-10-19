@@ -67,7 +67,7 @@ const AddExpenseForm = ({ budgets }) => {
             Budget Category
           </label>
           <select
-            className="form-control fs-5 mb-3"
+            className="form-control form-select fs-5 mb-3"
             name="newExpenseBudget"
             id="newExpenseBudget"
             required
